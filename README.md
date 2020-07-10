@@ -89,3 +89,6 @@ MyBatis-04:两种分页方式
     方式二：
     <!--limit分页-->
     有时间看：MyBatis 分页插件 PageHelper
+    
+MyBatis-05:使用注解增删改查
+    
