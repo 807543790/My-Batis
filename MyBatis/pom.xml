@@ -13,6 +13,8 @@
     <modules>
         <module>MyBatis-01</module>
         <module>MyBatis-02</module>
+        <module>MyBatis-03</module>
+        <module>MyBatis-04</module>
     </modules>
 
     <!--导入依赖-->
@@ -34,6 +36,12 @@
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>4.12</version>
+        </dependency>
+        <!--log4j -->
+        <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+            <version>1.2.17</version>
         </dependency>
     </dependencies>
     <!--在build中配置resource，来防止我们资源导出失败的问题-->
