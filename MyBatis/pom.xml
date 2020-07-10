@@ -16,6 +16,7 @@
         <module>MyBatis-03</module>
         <module>MyBatis-04</module>
         <module>MyBatis-05</module>
+        <module>MyBatis-06</module>
     </modules>
 
     <!--导入依赖-->
@@ -44,6 +45,13 @@
             <artifactId>log4j</artifactId>
             <version>1.2.17</version>
         </dependency>
+        <!--lombok插件 -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.12</version>
+        </dependency>
+
     </dependencies>
     <!--在build中配置resource，来防止我们资源导出失败的问题-->
     <build>

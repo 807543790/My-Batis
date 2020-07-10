@@ -91,4 +91,36 @@ MyBatis-04:两种分页方式
     有时间看：MyBatis 分页插件 PageHelper
     
 MyBatis-05:使用注解增删改查
+        
+    学习一：给openSession设置参数为true时，会自动提交事务，不需要自己提交。      
+    public static SqlSession getSqlSession(){
+        //参数传入true时，会自动提交事务
+        return  sqlSessionFactory.openSession(true);
+    }
+    学习二：
+    #{}和${}区别
     
+    #{}可以防止SQL注入问题，但是${}不行。
+    ${}一般是传入数据库对象使用的，比如数据库名称
+MyBatis-06:lombok插件
+    @Getter and @Setter
+    @FieldNameConstants
+    @ToString
+    @EqualsAndHashCode
+    @**AllArgsConstructor**：生成有参数的构造方法, @RequiredArgsConstructor and @N**oArgsConstructor**：生成无参数的构造方法
+    @Log, @Log4j, @Log4j2, @Slf4j, @XSlf4j, @CommonsLog, @JBossLog, @Flogger, @CustomLog
+    **@Data**：生成get，set，toString方法
+    @Builder
+    @SuperBuilder
+    @Singular
+    @Delegate
+    @Value
+    @Accessors
+    @Wither
+    @With
+    @SneakyThrows
+    @val
+    @var
+    experimental @var
+    @UtilityClass
+    Lombok config system
