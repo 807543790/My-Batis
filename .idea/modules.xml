@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/My-Batis.iml" filepath="$PROJECT_DIR$/.idea/My-Batis.iml" />
+      <module fileurl="file://$PROJECT_DIR$/MyBatis/MyBatis.iml" filepath="$PROJECT_DIR$/MyBatis/MyBatis.iml" />
+      <module fileurl="file://$PROJECT_DIR$/MyBatis/MyBatis-01/MyBatis01.iml" filepath="$PROJECT_DIR$/MyBatis/MyBatis-01/MyBatis01.iml" />
+      <module fileurl="file://$PROJECT_DIR$/MyBatis/MyBatis-02/MyBatis02.iml" filepath="$PROJECT_DIR$/MyBatis/MyBatis-02/MyBatis02.iml" />
+    </modules>
+  </component>
+</project>
