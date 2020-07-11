@@ -2,6 +2,7 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
       <profile name="Maven default annotation processors profile" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
@@ -12,6 +13,7 @@
         <module name="MyBatis04" />
         <module name="MyBatis05" />
         <module name="MyBatis06" />
+        <module name="MyBatis07" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -22,6 +24,7 @@
       <module name="MyBatis04" target="1.5" />
       <module name="MyBatis05" target="1.5" />
       <module name="MyBatis06" target="1.5" />
+      <module name="MyBatis07" target="1.5" />
     </bytecodeTargetLevel>
   </component>
 </project>

@@ -103,6 +103,7 @@ MyBatis-05:使用注解增删改查
     #{}可以防止SQL注入问题，但是${}不行。
     ${}一般是传入数据库对象使用的，比如数据库名称
 MyBatis-06:lombok插件
+
     @Getter and @Setter
     @FieldNameConstants
     @ToString
@@ -124,3 +125,10 @@ MyBatis-06:lombok插件
     experimental @var
     @UtilityClass
     Lombok config system
+    
+MyBatis-07:复杂查询环境搭建
+    
+     1.创建实体类
+     2.编写mapper接口或者XML文件
+     3.在配置文件中绑定接口或者XML文件
+     4.进行测试
