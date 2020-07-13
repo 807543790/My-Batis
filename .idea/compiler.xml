@@ -14,6 +14,7 @@
         <module name="MyBatis05" />
         <module name="MyBatis06" />
         <module name="MyBatis07" />
+        <module name="MyBatis08" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -25,6 +26,7 @@
       <module name="MyBatis05" target="1.5" />
       <module name="MyBatis06" target="1.5" />
       <module name="MyBatis07" target="1.5" />
+      <module name="MyBatis08" target="1.5" />
     </bytecodeTargetLevel>
   </component>
 </project>

@@ -18,6 +18,7 @@
         <module>MyBatis-05</module>
         <module>MyBatis-06</module>
         <module>MyBatis-07</module>
+        <module>MyBatis-08</module>
     </modules>
 
     <!--导入依赖-->

@@ -21,7 +21,7 @@ public class userDaoTest {
         System.out.println(student);
         sqlSession.close();
     }
-
+    //    多对一方式一
     @Test
     public void getStudentTeacher(){
         SqlSession sqlSession = MyBatisUtils.getSqlSession();
@@ -34,7 +34,7 @@ public class userDaoTest {
 
         sqlSession.close();
     }
-
+    //    多对一方式二
     @Test
     public void getStudentTeacher2(){
         SqlSession sqlSession = MyBatisUtils.getSqlSession();
