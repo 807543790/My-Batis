@@ -5,6 +5,8 @@ import com.zhangbin.utils.MyBatisUtils;
 import org.apache.ibatis.session.SqlSession;
 import org.junit.Test;
 
+import java.util.List;
+
 /**
  * 认认真真敲代码，开开心心每一天
  *
@@ -17,6 +19,32 @@ public class userDaoTest {
         StudentMapper mapper = sqlSession.getMapper(StudentMapper.class);
         Student student = mapper.getStudent(1);
         System.out.println(student);
+        sqlSession.close();
+    }
+
+    @Test
+    public void getStudentTeacher(){
+        SqlSession sqlSession = MyBatisUtils.getSqlSession();
+
+        StudentMapper mapper = sqlSession.getMapper(StudentMapper.class);
+        List<Student> studentTeacher = mapper.getStudentTeacher();
+        for (Student student : studentTeacher) {
+            System.out.println(student);
+        }
+
+        sqlSession.close();
+    }
+
+    @Test
+    public void getStudentTeacher2(){
+        SqlSession sqlSession = MyBatisUtils.getSqlSession();
+
+        StudentMapper mapper = sqlSession.getMapper(StudentMapper.class);
+        List<Student> studentTeacher = mapper.getStudentTeacher2();
+        for (Student student : studentTeacher) {
+            System.out.println(student);
+        }
+
         sqlSession.close();
     }
 }
