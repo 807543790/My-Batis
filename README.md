@@ -222,3 +222,55 @@ MyBatis-09:
                     insert into blog(id, title, author,create_time, views) 
                     values (#{id}, #{title}, #{author}, #{createTime},#{views} )
              </insert>        
+             
+        3.<!--动态查询之if-->        
+            <!--<where>标签替代SQL中的WHERE。
+                where 元素只会在子元素返回任何内容的情况下才插入 “WHERE” 子句。
+                而且，若子句的开头为 “AND” 或 “OR”，where 元素也会将它们去除。-->
+            <select id="getBlogsIF" parameterType="map" resultType="Blog">
+                select * from blog
+                <where>
+                    <if test="title != null">
+                        and title = #{title}
+                    </if>
+                    <if test="author != null">
+                        and author = #{author}
+                    </if>
+                </where>
+            </select>
+            
+        4.<!--动态查询之Choose-->
+            <!--<Choose>标签类似于java中的switch，
+            只能有一个符合的条件进行查询，如果没有那就执行<otherwise>标签里的SQL,注意该标签没有其他属性-->
+            <select id="getBlogsChoose" parameterType="map" resultType="Blog">
+                select * from blog
+                <where>
+                    <choose>
+                        <when test="title != null">
+                            and title = #{title}
+                        </when>
+                        <when test="author != null">
+                            and author = #{author}
+                        </when>
+                        <otherwise>
+                            and views  =#{views}
+                        </otherwise>
+                    </choose>
+                </where>
+            </select>
+        
+        5.<!--动态查询之Set-->
+            <!--set 元素会动态地在行首插入 SET 关键字，
+                并会删掉额外的逗号（这些逗号是在使用条件语句给列赋值时引入的）。这些逗号是在使用条件语句给列赋值时引入的-->
+            <update id="updateBlog" parameterType="map" >
+                update blog
+                <set>
+                    <if test="title != null">
+                         title = #{title},
+                    </if>
+                    <if test="author != null">
+                         author = #{author},
+                    </if>
+                </set>
+                where id = #{id}
+            </update>     

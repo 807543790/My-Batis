@@ -8,6 +8,8 @@ import org.apache.ibatis.session.SqlSession;
 import org.junit.Test;
 
 import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
 
 /**
  * 认认真真敲代码，开开心心每一天
@@ -15,6 +17,8 @@ import java.util.Date;
  * @Date 2020/6/21-15:57
  */
 public class userDaoTest {
+
+    //插入数据
     @Test
     public void addBlog(){
         SqlSession sqlSession = MyBatisUtils.getSqlSession();
@@ -41,6 +45,50 @@ public class userDaoTest {
         mapper.addBlog(blog);
 
 
+        sqlSession.close();
+    }
+
+//    动态SQL之if
+    @Test
+    public void getBlog(){
+        SqlSession sqlSession = MyBatisUtils.getSqlSession();
+        BlogMapper mapper = sqlSession.getMapper(BlogMapper.class);
+        HashMap map = new HashMap();
+//        添加数据就是IF查询
+//        map.put("title","java简单");
+        List<Blog> blogsIF = mapper.getBlogsIF(map);
+        for (Blog blog : blogsIF) {
+            System.out.println(blog);
+        }
+
+        sqlSession.close();
+    }
+
+    //    动态SQL之Choose
+    @Test
+    public void getBlogChoose(){
+        SqlSession sqlSession = MyBatisUtils.getSqlSession();
+        BlogMapper mapper = sqlSession.getMapper(BlogMapper.class);
+        HashMap map = new HashMap();
+        //map.put("title","java简单");
+        List<Blog> blogsIF = mapper.getBlogsChoose(map);
+        for (Blog blog : blogsIF) {
+            System.out.println(blog);
+        }
+
+        sqlSession.close();
+    }
+
+    //    动态SQL之Choose
+    @Test
+    public void UpdateBlog(){
+        SqlSession sqlSession = MyBatisUtils.getSqlSession();
+        BlogMapper mapper = sqlSession.getMapper(BlogMapper.class);
+        HashMap map = new HashMap();
+        map.put("title","MyBatis简单吗");
+        map.put("id","214d30fd0b2944bda43c4c53fac9f471");
+        int i = mapper.updateBlog(map);
+        System.out.println(i);
         sqlSession.close();
     }
 }
