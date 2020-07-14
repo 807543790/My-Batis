@@ -19,6 +19,7 @@
         <module>MyBatis-06</module>
         <module>MyBatis-07</module>
         <module>MyBatis-08</module>
+        <module>MyBatis-09</module>
     </modules>
 
     <!--导入依赖-->
