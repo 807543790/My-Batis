@@ -25,10 +25,13 @@
 
 
         <!--   方式二   -->
+        <!--一:先查询出所有的老师数据-->
         <select id="getTeacher2" resultMap="teacherMap2">
             select * from teacher where id = #{tid}
         </select>
+        <!--二:使用resultMap标签关联另一个SQL进行子查询-->
         <resultMap id="teacherMap2" type="Teacher">
+            <!--property指的是子查询的结果集,column指的是子查询需要的查询条件，ofType指的是查询数据的实体类-->
             <collection property="students" column="id" ofType="Student" select="getStudent">
             </collection>
         </resultMap>

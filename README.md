@@ -126,7 +126,7 @@ MyBatis-06:lombok插件
     @UtilityClass
     Lombok config system
     
-MyBatis-07:复杂查询环境搭建
+MyBatis-07:多对一
     
      1.创建实体类
      2.编写mapper接口或者XML文件
@@ -173,3 +173,41 @@ MyBatis-07:复杂查询环境搭建
                      <result property="id" column="tid"></result>
                  </association>
              </resultMap>
+             
+MyBatis-07:一对多   
+
+            <!--   方式一   -->
+            <!--一对多查询  -->
+            <select id="getTeacher" resultMap="teacherMap">
+                select t.name tname,t.id tid,s.id sid,s.name sname  from teacher t, student s where t.id = s.tid and t.id = #{tid};
+            </select>
+    
+            <!--id对应resultMap中的定义值 返回值类型为Teacher-->
+            <resultMap id="teacherMap" type="Teacher">
+                <result property="name" column="tname"></result>
+                <result property="id" column="tid"></result>
+    
+                <!--一对多需要遍历数据，所以使用的是collection标签 ofType标签替代多对一中的javaType标签，可以循环数据-->
+                <!--注意点！！！！！！！：一对多查询出来的数据是多条，所以property属性值后边需要加S，实体类需要是复数-->
+                <collection property="students" ofType="Student" >
+                    <result property="id" column="sid"></result>
+                    <result property="name" column="sname"></result>
+                    <result property="tid" column="tid"></result>
+                </collection>
+            </resultMap>
+    
+    
+           <!--   方式二   -->
+           <!--一:先查询出所有的老师数据-->
+           <select id="getTeacher2" resultMap="teacherMap2">
+               select * from teacher where id = #{tid}
+           </select>
+           <!--二:使用resultMap标签关联另一个SQL进行子查询-->
+           <resultMap id="teacherMap2" type="Teacher">
+               <!--property指的是子查询的结果集,column指的是子查询需要的查询条件，ofType指的是查询数据的实体类-->
+               <collection property="students" column="id" ofType="Student" select="getStudent">
+               </collection>
+           </resultMap>
+           <select id="getStudent" resultType="Student">
+               select * from student where tid = #{id}
+           </select>
