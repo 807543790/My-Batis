@@ -21,6 +21,9 @@ public interface BlogMapper {
     //动态SQL之IF
     List<Blog> getBlogsChoose(Map map);
 
-//    动态SQL之SET
+    //动态SQL之SET
     int updateBlog(Map map);
+
+    //动态SQL之foreach
+    List<Blog> getBlogForEach(Map map);
 }

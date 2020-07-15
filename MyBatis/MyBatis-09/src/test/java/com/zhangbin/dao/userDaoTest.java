@@ -7,6 +7,7 @@ import com.zhangbin.utils.MyBatisUtils;
 import org.apache.ibatis.session.SqlSession;
 import org.junit.Test;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -89,6 +90,23 @@ public class userDaoTest {
         map.put("id","214d30fd0b2944bda43c4c53fac9f471");
         int i = mapper.updateBlog(map);
         System.out.println(i);
+        sqlSession.close();
+    }
+
+    //动态SQL之ForEach
+    @Test
+    public void selectBlog(){
+        SqlSession sqlSession = MyBatisUtils.getSqlSession();
+        BlogMapper mapper = sqlSession.getMapper(BlogMapper.class);
+        ArrayList<Integer> arrayList = new ArrayList<Integer>();
+        arrayList.add(1);
+        arrayList.add(2);
+        HashMap map = new HashMap();
+        map.put("ids",arrayList);
+        List<Blog> blogForEach = mapper.getBlogForEach(map);
+        for (Blog forEach : blogForEach) {
+            System.out.println(forEach);
+        }
         sqlSession.close();
     }
 }

@@ -274,3 +274,32 @@ MyBatis-09:
                 </set>
                 where id = #{id}
             </update>     
+        6.<sql>标签
+                <!--SQL标签将公共的条件字段提取出来，定义唯一ID供其他SQL使用
+                    在要使用SQL中加入<include>标签使用 refid对应的是<SQL>的id-->
+                <sql id="sql-title">
+                    <if test="title != null">
+                        and title = #{title}
+                    </if>
+                    <if test="author != null">
+                        and author = #{author}
+                    </if>
+                </sql>
+                
+                <select id="getBlogsIF" parameterType="map" resultType="Blog">
+                        select * from blog
+                        <where>
+                            <include refid="sql-title"></include>
+                        </where>
+                    </select>
+        7.ForEach标签
+                <!--动态SQL之forEach-->
+                <!--collection属性表示要循环的数据，open表示SQL前拼接的东西，close表示SQL拼接的东西，separator表示循环属性之间插入的东西-->
+                <select id="getBlogForEach" parameterType="map" resultType="Blog">
+                    select * from blog
+                    <where>
+                        <foreach collection="ids" open="and (" close=")" item="id" separator="or">
+                            id = #{id}
+                        </foreach>
+                    </where>
+                </select>            
