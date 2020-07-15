@@ -8,6 +8,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="MyBatis-09" />
+        <module name="MyBatis-10" />
         <module name="MyBatis01" />
         <module name="MyBatis02" />
         <module name="MyBatis03" />
@@ -21,6 +22,7 @@
     <bytecodeTargetLevel>
       <module name="MyBatis" target="1.5" />
       <module name="MyBatis-09" target="1.5" />
+      <module name="MyBatis-10" target="1.5" />
       <module name="MyBatis01" target="1.5" />
       <module name="MyBatis02" target="1.5" />
       <module name="MyBatis03" target="1.5" />

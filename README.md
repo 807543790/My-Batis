@@ -211,7 +211,7 @@ MyBatis-07:一对多
                <select id="getStudent" resultType="Student">
                    select * from student where tid = #{id}
                </select>
-MyBatis-09:
+MyBatis-09:动态SQL标签
 
         1.插入数据时字段不统一可以在配置文件中的<settings>添加标签：        
             <!--是否开启驼峰命名自动映射，即从经典数据库列名 A_COLUMN 映射到经典 Java 属性名 aColumn。-->
@@ -302,4 +302,22 @@ MyBatis-09:
                             id = #{id}
                         </foreach>
                     </where>
-                </select>            
+                </select>      
+
+MyBatis-09:动态SQL标签
+                
+                //    一级缓存
+                        @Test
+                        public void getUserById(){
+                            SqlSession sqlSession = MyBatisUtils.getSqlSession();
+                            UserMapper mapper = sqlSession.getMapper(UserMapper.class);
+                        查询相同的SQL时,启动缓存.（参数SQL相同）
+                            User userById = mapper.getUserById(91);
+                            System.out.println(userById);
+                        //手动关闭缓存,关闭后执行两次SQL，或者执行其他的增删改造作也会清除缓存
+                            sqlSession.clearCache();
+                            System.out.println("--------------------------------------------");
+                            User userById1 = mapper.getUserById(91);
+                            System.out.println(userById1);
+                            sqlSession.close();
+                        }      
