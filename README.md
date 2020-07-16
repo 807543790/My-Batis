@@ -320,4 +320,42 @@ MyBatis-09:动态SQL标签
                             User userById1 = mapper.getUserById(91);
                             System.out.println(userById1);
                             sqlSession.close();
-                        }      
+                        }     
+                        
+                        
+                //    二级缓存    
+                        <!--在当前XML中使用二级缓存-->
+                        <!--这个更高级的配置创建了一个 FIFO 缓存，每隔 60 秒刷新，最多可以存储结果对象或列表的 512 个引用，
+                            而且返回的对象被认为是只读的，因此对它们进行修改可能会在不同线程中的调用者产生冲突。-->
+                    
+                        <!--可用的清除策略有：-->
+                        <!--LRU – 最近最少使用：移除最长时间不被使用的对象。-->
+                        <!--FIFO – 先进先出：按对象进入缓存的顺序来移除它们。-->
+                        <!--SOFT – 软引用：基于垃圾回收器状态和软引用规则移除对象。-->
+                        <!--WEAK – 弱引用：更积极地基于垃圾收集器状态和弱引用规则移除对象。-->
+                        <!--<cache-->
+                                <!--eviction="FIFO"-->
+                                <!--flushInterval="60000"-->
+                                <!--size="512"-->
+                                <!--readOnly="true"/>-->
+                    
+                       <cache/>  <!--使用默认cache标签时，需要在实体类加上序列化 (implements Serializable)--> 
+                       
+                       测试：
+                        //    二级缓存
+                           @Test
+                           public void getUserById2(){
+                               SqlSession sqlSession = MyBatisUtils.getSqlSession();
+                               SqlSession sqlSession2 = MyBatisUtils.getSqlSession();
+                               UserMapper mapper = sqlSession.getMapper(UserMapper.class);
+                               UserMapper mapper2 = sqlSession2.getMapper(UserMapper.class);
+                       //      一级缓存关闭后，二级缓存会把一级缓存的东西存在二级缓存。不过二级缓存范围只能在一个XML文件中
+                               User userById = mapper.getUserById(91);
+                               System.out.println(userById);
+                               sqlSession.close();
+                       
+                               User userById2 = mapper2.getUserById(91);
+                               System.out.println(userById2);
+                               sqlSession.close();
+                       
+                           }

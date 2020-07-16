@@ -34,4 +34,22 @@ public class userDaoTest {
         System.out.println(userById1);
         sqlSession.close();
     }
+
+    //    二级缓存
+    @Test
+    public void getUserById2(){
+        SqlSession sqlSession = MyBatisUtils.getSqlSession();
+        SqlSession sqlSession2 = MyBatisUtils.getSqlSession();
+        UserMapper mapper = sqlSession.getMapper(UserMapper.class);
+        UserMapper mapper2 = sqlSession2.getMapper(UserMapper.class);
+//        二级缓存会把一级缓存的东西存在二级缓存。不过二级缓存范围只能在一个XML文件中
+        User userById = mapper.getUserById(91);
+        System.out.println(userById);
+        sqlSession.close();
+
+        User userById2 = mapper2.getUserById(91);
+        System.out.println(userById2);
+        sqlSession.close();
+
+    }
 }

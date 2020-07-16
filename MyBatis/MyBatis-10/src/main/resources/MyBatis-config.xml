@@ -14,6 +14,8 @@
         <setting name="logImpl" value="STDOUT_LOGGING"/>
         <!--是否开启驼峰命名自动映射，即从经典数据库列名 A_COLUMN 映射到经典 Java 属性名 aColumn。-->
         <setting name="mapUnderscoreToCamelCase" value="true"></setting>
+        <!--开启全局缓存-->
+        <setting name="cacheEnabled" value="true"></setting>
     </settings>
 
 
